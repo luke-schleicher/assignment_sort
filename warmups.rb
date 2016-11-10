@@ -22,9 +22,9 @@ def insertion_sort(arr)
 
 end
 
-array = [8, 2, -5, 0, 9, -11]
-print insertion_sort(array)
-
+# array = [8, 2, -5, 0, 9, -11]
+# print insertion_sort(array)
+#
 
 
 
@@ -37,31 +37,26 @@ print insertion_sort(array)
 
 
 def bubble_sort(arr)
-
-  # loop twice until we don't have anything to swap
-  # outside loop[0..-2]   the end of the list will decrement each time
-    # set swap to false
-    # inside loop from 0 to then end of the list
-    # compare a[i] to a[i + 1]
-    # if a[i] is greater than a[i + 1]
-      # swap values
-      # set swap to true
-    # decrement end of list
-    # if swap is false
-      # our array is sorted
-      # return the array
-
-
+  swap = false
+  end_of_unsorted_list = arr.length - 1
+  while swap
+    swap = false
+    (0..end_of_unsorted_list - 1).each do |left_item|
+      right_item = left_item + 1
+      if arr[left_item] > arr[right_item]
+        arr[left_item], arr[right_item] = arr[right_item], arr[left_item]
+        swap = true
+      end
+    end
+    end_of_unsorted_list -= 1
+  end
+  arr
 end
 
 array = [8, 2, -5, 0, 9, -11]
-print buble_sort(array)
+print bubble_sort(array)
 
 
 
 # def merge_sort
 # end
-
-
-
-
