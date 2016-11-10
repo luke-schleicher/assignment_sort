@@ -1,9 +1,6 @@
 def insertion_sort(arr)
+  return arr if arr.length <= 1
 
-  # index for every element in the array from the beginning to the end - 1
-  # value is the value of the index you're on
-  # keep track of the sorted chunk length (the index of the element you are  currently checking - 1)
-  #
   for element in 1...arr.length
 
     value = arr[element]
@@ -24,21 +21,13 @@ end
 
 # array = [8, 2, -5, 0, 9, -11]
 # print insertion_sort(array)
-#
-
-
-
-
-
-
-
-
-
-
 
 def bubble_sort(arr)
-  swap = false
+  return arr if arr.length <= 1
+
+  swap = true
   end_of_unsorted_list = arr.length - 1
+
   while swap
     swap = false
     (0..end_of_unsorted_list - 1).each do |left_item|
@@ -53,10 +42,34 @@ def bubble_sort(arr)
   arr
 end
 
-array = [8, 2, -5, 0, 9, -11]
-print bubble_sort(array)
+# array = [8, 2, -5, 0, 9, -11]
+# print bubble_sort(array)
 
+# MERGE SORT = RECURSIVE DIVIDE AND CONQUER
+# recursively divide initial array in to two parts until have arrays of one item
+# split each item in to its own section
 
+# keep going to combine all back in to large array
+# Recursive divide and conquer
+def merge_sort(unsorted_arr)
+  return unsorted_arr if unsorted_arr.length <= 1
 
-# def merge_sort
-# end
+  merge_sort( unsorted_arr[0..unsorted_arr.length/2] )
+
+end
+
+# Merge the returns of recursive calls to merge sort
+
+#  MERGE TWO SORTED ARRAYS - RETURN A SORTED ARRAY
+    # compare item 0 to item 1, swap so ascending order
+    # move to items 2,3 4,5 6,7  iteration
+    # once each pair is sorted, combine in to 2 element array
+    # then combine pair arrays by  ...
+    # look at first value in each
+    # put smaller one in new array, pop off old pair array
+    # look at first item in each again
+    # unless one of the arrays is emtpy, then push remaining array on to new array
+    # in entirety
+def merge(arr1, arr2)
+
+end
