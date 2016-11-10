@@ -54,8 +54,9 @@ end
 def merge_sort(unsorted_arr)
   return unsorted_arr if unsorted_arr.length <= 1
 
-  merge_sort( unsorted_arr[0..unsorted_arr.length/2] )
-
+  left = merge_sort( unsorted_arr[0..(unsorted_arr.length/2 - 1) ] )
+  right = merge_sort( unsorted_arr[(unsorted_arr.length/2)..-1])
+  merge(left, right)
 end
 
 # Merge the returns of recursive calls to merge sort
@@ -70,6 +71,37 @@ end
     # look at first item in each again
     # unless one of the arrays is emtpy, then push remaining array on to new array
     # in entirety
-def merge(arr1, arr2)
-
+def merge(left, right)
+  return_array = []
+  until left.empty? && right.empty?
+    if left.empty?
+      return_array += right
+      right = []
+    elsif right.empty?
+      return_array += left
+      left = []
+    else
+      if left[0] >= right[0]
+        return_array.push right.shift
+      else
+        return_array.push left.shift
+      end
+    end
+  end
+  return_array
 end
+# refactor so it doesn't utilize shift and uses indexes instead
+
+def benchmark(arr)
+  start = Time.now
+  1000.times { insertion_sort(arr) }
+  puts "insertion time = #{Time.now - start}"
+  start = Time.now
+  1000.times { bubble_sort(arr) }
+  puts "bubble time = #{Time.now - start}"
+  start = Time.now
+  1000.times { merge_sort(arr) }
+  puts "merge time = #{Time.now - start}"
+end
+array = Array.new(8027){rand(0..14525653645)}
+benchmark(array)
