@@ -73,6 +73,7 @@ end
     # in entirety
 def merge(left, right)
   return_array = []
+  # think about splitting lines 78 - 83 out after until loop
   until left.empty? && right.empty?
     if left.empty?
       return_array += right
@@ -94,13 +95,13 @@ end
 
 def benchmark(arr)
   start = Time.now
-  1000.times { insertion_sort(arr) }
+  100.times { insertion_sort(arr) }
   puts "insertion time = #{Time.now - start}"
   start = Time.now
-  1000.times { bubble_sort(arr) }
+  100.times { bubble_sort(arr) }
   puts "bubble time = #{Time.now - start}"
   start = Time.now
-  1000.times { merge_sort(arr) }
+  100.times { merge_sort(arr) }
   puts "merge time = #{Time.now - start}"
 end
 array = Array.new(8027){rand(0..14525653645)}
